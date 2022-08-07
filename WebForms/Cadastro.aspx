@@ -12,7 +12,6 @@
                 <label for="Cpf" class="form-label">CPF</label>
                 <input type="text" runat="server" id="Cpf" class="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Cpf" ErrorMessage="Preencha o Campo" ForeColor="Red" />
-                <asp:RegularExpressionValidator runat="server" ControlToValidate="Cpf" ValidationExpression="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/" ErrorMessage="Formato incorreto" ForeColor="Red" />
             </div>
             <div class="col-md-9">
                 <label for="Nome" class="form-label">Nome</label>
@@ -47,18 +46,18 @@
             </div>
             <div class="col-md-3">
                 <label for="Sexo" class="form-label">Sexo</label>
-                <select id="Sexo" class="form-select" aria-label="Default select example">
-                    <option value="M">Masculino</option>
-                    <option value="F">Feminino</option>
-                </select>
+                <asp:DropDownList ID="Sexo" runat="server" CssClass="form-select">
+                    <asp:ListItem Value="M" Text="Masculino" Selected="True" />
+                    <asp:ListItem Value="F" Text="Feminino" />
+                </asp:DropDownList>
             </div>
             <div class="col-md-3">
-                <label for="EstadoCivil" class="form-label">EstadoCivil</label>
-                <select id="EstadoCivil" class="form-select" aria-label="Default select example">
-                    <option value="Solteiro">Solteiro(a)</option>
-                    <option value="Casado">Casado(a)</option>
-                    <option value="Divorciado">Divorciado(a)</option>
-                </select>
+                <label for="EstadoCivil" class="form-label">Estado Civil</label>
+                <asp:DropDownList ID="EstadoCivil" runat="server" CssClass="form-select">
+                    <asp:ListItem Value="Solteiro" Text="Solteiro(a)" Selected="True" />
+                    <asp:ListItem Value="Casado" Text="Casado(a)" />
+                    <asp:ListItem Value="Divorciado" Text="Divorciado(a)" />
+                </asp:DropDownList>
             </div>
         </div>
 

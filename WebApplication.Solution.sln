@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForm", "WebForms\WebForm.csproj", "{B95BB9CC-B833-4E2F-BE6A-9FBC694E46C7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6191FAFE-22B6-4BF8-85C6-61408C4BEF27} = {6191FAFE-22B6-4BF8-85C6-61408C4BEF27}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMVC", "WebMVC\WebMVC.csproj", "{3FECB3A7-CC31-43F0-915C-DB26DF3D4343}"
 EndProject

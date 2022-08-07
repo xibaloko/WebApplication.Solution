@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebForm.GtiServiceReference;
 
 namespace WebForm
 {
@@ -16,10 +17,40 @@ namespace WebForm
 
         protected void Cadastrar_Command(object sender, CommandEventArgs e)
         {
+			Cliente cliente = new Cliente()
+			{
+				Nome = Nome.Value,
+				Cpf = Cpf.Value,
+				Rg = RG.Value,
+				DataExpedicao = DateTime.Parse(DataExpedicao.Value),
+				UfExpedicao = UfExpedicao.Value,
+				OrgaoExpedicao = OrgExpedicao.Value,
+				DataNascimento = DateTime.Parse(DataNascimento.Value),
+				EstadoCivil = EstadoCivil.SelectedValue,
+				Sexo = Sexo.SelectedValue
+			};
 
+			cliente.Enderecos = new List<EnderecoCliente>();
+
+			cliente.Enderecos.Add(new EnderecoCliente()
+            {
+				Cep = Cep.Value,
+				Logradouro = Logradouro.Value,
+				Numero = Numero.Value,
+				Complemento = Complemento.Value,
+				Bairro = Bairro.Value,
+				Cidade = Cidade.Value,
+				Uf = UF.Value
+			});
+
+            using (var svc = new GtiServiceClient())
+            {
+				svc.NovoCadastro(cliente);
+            };
         }
 
-        private bool ValidarCpf(string cpf)
+		/** Método Referência Macoratti - https://www.macoratti.net/11/09/c_val1.htm **/
+		private bool ValidarCpf(string cpf)
 		{
 			int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 			int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };

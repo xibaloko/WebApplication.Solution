@@ -78,6 +78,24 @@ namespace WebForm
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DataNascimento;
 
         /// <summary>
+        /// Controle Sexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList Sexo;
+
+        /// <summary>
+        /// Controle EstadoCivil.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList EstadoCivil;
+
+        /// <summary>
         /// Controle Cep.
         /// </summary>
         /// <remarks>

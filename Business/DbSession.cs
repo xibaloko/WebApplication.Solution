@@ -11,7 +11,7 @@ namespace Business
         {
             try
             {
-                conexao = new SqlConnection("Data Source=.;Initial Catalog=pegi;Integrated Security=True");
+                conexao = new SqlConnection(@"Data Source=DESKTOP-81I91RQ\SQLEXPRESS;Initial Catalog=gti;User ID=sa;Password=Militao01++");
 
                 conexao.Open();
 
