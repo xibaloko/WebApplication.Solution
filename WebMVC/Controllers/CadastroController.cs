@@ -17,11 +17,9 @@ namespace WebMVC.Controllers
         {
             var clientes = await api.GetClientes();
 
-            PreecherDropDownLists();
-
-            return View();
-
+            return View(clientes);
         }
+
 
         private void PreecherDropDownLists()
         {
@@ -62,11 +60,6 @@ namespace WebMVC.Controllers
             ViewBag.EstadoCivil = new MultiSelectList(lstEstadoCivil.ToList(), "Value", "Text");
         }
 
-        [HttpPost]
-        public ActionResult Index(Cliente model)
-        {
-            return View();
-        }
 
         // GET: Cadastro/Details/5
         public ActionResult Details(int id)
@@ -77,12 +70,15 @@ namespace WebMVC.Controllers
         // GET: Cadastro/Create
         public ActionResult Create()
         {
+
+            PreecherDropDownLists();
+
             return View();
         }
 
         // POST: Cadastro/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Cliente model)
         {
             try
             {

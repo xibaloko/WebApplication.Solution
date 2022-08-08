@@ -39,6 +39,34 @@ namespace WebMVC.Util
                 throw new Exception("Não foi possivel buscar o cep.");
             }
         }
+
+        public async Task<Cliente> PostCliente()
+        {
+            //WebResponse response;
+            //string endPoint = $"http://localhost:51456/api/Cadastro";
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endPoint);
+            //request.ContentType = "application/json";
+            //request.Accept = "application/json";
+            //request.t
+            //try
+            //{
+            //    response = await request.GetResponseAsync();
+            //}
+            //catch (Exception)
+            //{
+            //    throw;
+            //}
+
+            //if (((HttpWebResponse)response).StatusCode == HttpStatusCode.OK)
+            //{
+            //    var end = await ProcessResponse<List<Cliente>>(response);
+            //    return end;
+            //}
+            //else
+            //{
+            //    throw new Exception("Não foi possivel buscar o cep.");
+            //}
+        }
         private async Task<T> ProcessResponse<T>(WebResponse response)
         {
             if (((HttpWebResponse)response).StatusCode == HttpStatusCode.OK)
