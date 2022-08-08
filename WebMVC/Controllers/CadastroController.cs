@@ -83,7 +83,6 @@ namespace WebMVC.Controllers
         {
             try
             {
-                Api api = new Api();
                 await api.PostCliente(model, HttpMethod.Post);
 
                 return RedirectToAction("Index");
@@ -95,9 +94,11 @@ namespace WebMVC.Controllers
         }
 
         // GET: Cadastro/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var cliente = await api.GetCliente(id);
+
+            return View(cliente);
         }
 
         // POST: Cadastro/Edit/5
@@ -117,18 +118,20 @@ namespace WebMVC.Controllers
         }
 
         // GET: Cadastro/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var cliente = await api.GetCliente(id);
+
+            return View(cliente);
         }
 
         // POST: Cadastro/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public async Task<ActionResult> Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                await api.DeleteCliente(id, HttpMethod.Delete);
 
                 return RedirectToAction("Index");
             }

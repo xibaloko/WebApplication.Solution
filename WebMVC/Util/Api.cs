@@ -16,6 +16,34 @@ namespace WebMVC.Util
     public class Api
     {
         private readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+
+        public async Task<Cliente> GetCliente(int id)
+        {
+            WebResponse response;
+            string endPoint = $"http://localhost:51456/api/Cadastro/{id}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endPoint);
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+            try
+            {
+                response = await request.GetResponseAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            if (((HttpWebResponse)response).StatusCode == HttpStatusCode.OK)
+            {
+                var end = await ProcessResponse<Cliente>(response);
+                return end;
+            }
+            else
+            {
+                throw new Exception("Não foi possivel buscar o cep.");
+            }
+        }
+
         public async Task<List<Cliente>> GetClientes()
         {
             WebResponse response;
@@ -51,6 +79,24 @@ namespace WebMVC.Util
             {
                 await SetContent(data, requestMessage);
 
+                var response = await client.SendAsync(requestMessage).ConfigureAwait(false);
+                var obj = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await Task.FromResult(JsonConvert.DeserializeObject<Cliente>(obj, JsonSettings)).ConfigureAwait(false);
+                }
+                else { return null; }
+            }
+        }
+
+        public async Task<Cliente> DeleteCliente(int id, HttpMethod method)
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders
+                 .Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            using (var requestMessage = new HttpRequestMessage(method, $"http://localhost:51456/api/Cadastro/{id}"))
+            {
                 var response = await client.SendAsync(requestMessage).ConfigureAwait(false);
                 var obj = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
