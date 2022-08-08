@@ -2,52 +2,64 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using WebMVC.Util;
 
 namespace WebMVC.Controllers
 {
     public class CadastroController : Controller
     {
-        public ActionResult Index()
+        private readonly Api api = new Api();
+        
+        public async Task<ActionResult> Index()
         {
-            IEnumerable<SelectListItem> lstSexo = new List<SelectListItem>();
+            var clientes = await api.GetClientes();
 
-            lstSexo.Append(new SelectListItem()
+            PreecherDropDownLists();
+
+            return View();
+
+        }
+
+        private void PreecherDropDownLists()
+        {
+            List<SelectListItem> lstSexo = new List<SelectListItem>();
+
+            lstSexo.Add(new SelectListItem()
             {
                 Text = "Masculino",
                 Value = "M"
             });
-            lstSexo.Append(new SelectListItem()
+            lstSexo.Add(new SelectListItem()
             {
                 Text = "Feminino",
                 Value = "F"
             });
 
-            IEnumerable<SelectListItem> lstEstadoCivil = new List<SelectListItem>();
+            List<SelectListItem> lstEstadoCivil = new List<SelectListItem>();
 
-            lstEstadoCivil.Append(new SelectListItem()
+            lstEstadoCivil.Add(new SelectListItem()
             {
                 Text = "Casado(a)",
                 Value = "Casado"
-            }) ;
+            });
 
-            lstEstadoCivil.Append(new SelectListItem()
+            lstEstadoCivil.Add(new SelectListItem()
             {
                 Text = "Solteiro(a)",
                 Value = "Solteiro"
             });
 
-            lstEstadoCivil.Append(new SelectListItem()
+            lstEstadoCivil.Add(new SelectListItem()
             {
                 Text = "Divorciado(a)",
                 Value = "Divorciado"
             });
 
-            ViewBag.Sexo = lstSexo;
-            ViewBag.EstadoCivil = lstEstadoCivil;
-
-            return View();
+            ViewBag.Sexo = new MultiSelectList(lstSexo.ToList(), "Value", "Text");
+            ViewBag.EstadoCivil = new MultiSelectList(lstEstadoCivil.ToList(), "Value", "Text");
         }
 
         [HttpPost]

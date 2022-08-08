@@ -37,10 +37,11 @@
             </div>
             <div class="col-md-3">
                 <label for="DataExpedicao" class="form-label">Data Expedição</label>
-                @Html.EditorFor(model => model.DataExpedicao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DataExpedicao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.DataExpedicao, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-3">
+                <label for="OrgaoExpedicao" class="form-label">Orgão Expedição</label>
                 @Html.EditorFor(model => model.OrgaoExpedicao, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.OrgaoExpedicao, "", new { @class = "text-danger" })
             </div>
@@ -54,31 +55,19 @@
         <div class="row mt-3">
             <div class="col-md-3">
                 <label for="DataNascimento" class="form-label">Data Nascimento</label>
-                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
 
             </div>
             <div class="col-md-3">
                 <label for="Sexo" class="form-label">Sexo</label>
-                @*<select id="sexo" class="form-select">
-                        <option value="M">Masculino</option>
-                        <option value="F">Feminino</option>
-                    </select>*@
-                @Html.DropDownList("Sexo", (IEnumerable<SelectListItem>)ViewBag.Sexo, null, new { htmlAttributes = new { @class = "form-select" } })
-                @*@Html.DropDownList("Sexo", (IEnumerable<SelectListItem>)ViewBag.Sexo, null, new { @class = "form-control" })*@
-                @*@Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("Sexo", (MultiSelectList)ViewBag.Sexo, null, new { @class = "form-select" })
                 @*@Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })*@
             </div>
             <div class="col-md-3">
                 <label for="EstadoCivil" class="form-label">Estado Civil</label>
-                @*<select id="EstadoCivil" class="form-select">
-                        <option value="Solteiro">Solteiro(a)</option>
-                        <option value="Casado">Casado(a)</option>
-                        <option value="Divorciado">Divorciado(a)</option>
-                    </select>*@
-                @Html.DropDownList("EstadoCivil", (IEnumerable<SelectListItem>)ViewBag.EstadoCivil, new { htmlAttributes = new { @class = "form-select" } })
-                @*@Html.EditorFor(model => model.EstadoCivil, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })*@
+                @Html.DropDownList("EstadoCivil", (MultiSelectList)ViewBag.EstadoCivil, null, new { @class = "form-select" })
+                @*@Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -137,7 +126,7 @@
 
         <div class="row mt-4">
             <div class="col-md-12 text-end">
-                <input type="submit" id="cadastrar" class="btn btn-dark btn-lg" />
+                <input type="submit" id="cadastrar" class="btn btn-dark btn-lg" value="Cadastrar" />
                 @*<input type="submit" id="atualizar" class="btn btn-dark btn-lg" />*@
             </div>
         </div>
