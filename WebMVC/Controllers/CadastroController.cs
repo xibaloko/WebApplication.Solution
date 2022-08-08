@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,49 @@ namespace WebMVC.Controllers
 {
     public class CadastroController : Controller
     {
-        // GET: Cadastro
         public ActionResult Index()
+        {
+            IEnumerable<SelectListItem> lstSexo = new List<SelectListItem>();
+
+            lstSexo.Append(new SelectListItem()
+            {
+                Text = "Masculino",
+                Value = "M"
+            });
+            lstSexo.Append(new SelectListItem()
+            {
+                Text = "Feminino",
+                Value = "F"
+            });
+
+            IEnumerable<SelectListItem> lstEstadoCivil = new List<SelectListItem>();
+
+            lstEstadoCivil.Append(new SelectListItem()
+            {
+                Text = "Casado(a)",
+                Value = "Casado"
+            }) ;
+
+            lstEstadoCivil.Append(new SelectListItem()
+            {
+                Text = "Solteiro(a)",
+                Value = "Solteiro"
+            });
+
+            lstEstadoCivil.Append(new SelectListItem()
+            {
+                Text = "Divorciado(a)",
+                Value = "Divorciado"
+            });
+
+            ViewBag.Sexo = lstSexo;
+            ViewBag.EstadoCivil = lstEstadoCivil;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(Cliente model)
         {
             return View();
         }
