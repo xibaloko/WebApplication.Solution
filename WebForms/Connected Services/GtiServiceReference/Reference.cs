@@ -400,6 +400,30 @@ namespace WebForm.GtiServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGtiService/NovoCadastro", ReplyAction="http://tempuri.org/IGtiService/NovoCadastroResponse")]
         System.Threading.Tasks.Task NovoCadastroAsync(WebForm.GtiServiceReference.Cliente cliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGtiService/BuscarClientes", ReplyAction="http://tempuri.org/IGtiService/BuscarClientesResponse")]
+        System.Collections.Generic.List<WebForm.GtiServiceReference.Cliente> BuscarClientes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGtiService/BuscarClientes", ReplyAction="http://tempuri.org/IGtiService/BuscarClientesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WebForm.GtiServiceReference.Cliente>> BuscarClientesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGtiService/ExcluirCadastro", ReplyAction="http://tempuri.org/IGtiService/ExcluirCadastroResponse")]
+        void ExcluirCadastro(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGtiService/ExcluirCadastro", ReplyAction="http://tempuri.org/IGtiService/ExcluirCadastroResponse")]
+        System.Threading.Tasks.Task ExcluirCadastroAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGtiService/BuscarCliente", ReplyAction="http://tempuri.org/IGtiService/BuscarClienteResponse")]
+        WebForm.GtiServiceReference.Cliente BuscarCliente(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGtiService/BuscarCliente", ReplyAction="http://tempuri.org/IGtiService/BuscarClienteResponse")]
+        System.Threading.Tasks.Task<WebForm.GtiServiceReference.Cliente> BuscarClienteAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGtiService/AtualizarCadastro", ReplyAction="http://tempuri.org/IGtiService/AtualizarCadastroResponse")]
+        void AtualizarCadastro(int id, WebForm.GtiServiceReference.Cliente cliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGtiService/AtualizarCadastro", ReplyAction="http://tempuri.org/IGtiService/AtualizarCadastroResponse")]
+        System.Threading.Tasks.Task AtualizarCadastroAsync(int id, WebForm.GtiServiceReference.Cliente cliente);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -435,6 +459,38 @@ namespace WebForm.GtiServiceReference {
         
         public System.Threading.Tasks.Task NovoCadastroAsync(WebForm.GtiServiceReference.Cliente cliente) {
             return base.Channel.NovoCadastroAsync(cliente);
+        }
+        
+        public System.Collections.Generic.List<WebForm.GtiServiceReference.Cliente> BuscarClientes() {
+            return base.Channel.BuscarClientes();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WebForm.GtiServiceReference.Cliente>> BuscarClientesAsync() {
+            return base.Channel.BuscarClientesAsync();
+        }
+        
+        public void ExcluirCadastro(int id) {
+            base.Channel.ExcluirCadastro(id);
+        }
+        
+        public System.Threading.Tasks.Task ExcluirCadastroAsync(int id) {
+            return base.Channel.ExcluirCadastroAsync(id);
+        }
+        
+        public WebForm.GtiServiceReference.Cliente BuscarCliente(int id) {
+            return base.Channel.BuscarCliente(id);
+        }
+        
+        public System.Threading.Tasks.Task<WebForm.GtiServiceReference.Cliente> BuscarClienteAsync(int id) {
+            return base.Channel.BuscarClienteAsync(id);
+        }
+        
+        public void AtualizarCadastro(int id, WebForm.GtiServiceReference.Cliente cliente) {
+            base.Channel.AtualizarCadastro(id, cliente);
+        }
+        
+        public System.Threading.Tasks.Task AtualizarCadastroAsync(int id, WebForm.GtiServiceReference.Cliente cliente) {
+            return base.Channel.AtualizarCadastroAsync(id, cliente);
         }
     }
 }

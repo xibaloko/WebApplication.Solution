@@ -36,4 +36,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="EnderecoCliente" nillable="true" type="tns:EnderecoCliente" />
+  <xs:complexType name="ArrayOfCliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cliente" nillable="true" type="tns:Cliente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCliente" nillable="true" type="tns:ArrayOfCliente" />
 </xs:schema>

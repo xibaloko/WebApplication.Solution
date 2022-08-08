@@ -14,5 +14,17 @@ namespace WCFServiceHost
     {
         [OperationContract]
         void NovoCadastro(Cliente cliente);
+
+        [OperationContract]
+        List<Cliente> BuscarClientes();
+
+        [OperationContract]
+        void ExcluirCadastro(int id);
+
+        [OperationContract]
+        Cliente BuscarCliente(int id);
+
+        [OperationContract]
+        void AtualizarCadastro(int id, Cliente cliente);
     }
 }

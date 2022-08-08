@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:HiddenField Id="HiddenID" runat="server" />
     <div class="container">
         <div class="mt-4">
             <h3>Cliente</h3>
@@ -10,13 +11,14 @@
         <div class="row mt-3">
             <div class="col-md-3">
                 <label for="Cpf" class="form-label">CPF</label>
-                <input type="text" runat="server" id="Cpf" class="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Cpf" ErrorMessage="Preencha o Campo" ForeColor="Red" />
+                <input type="text" runat="server" id="Cpf" class="form-control" ValidationGroup="cadastro"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Cpf" ErrorMessage="Preencha o Campo" ForeColor="Red" ValidationGroup="cadastro" />
+                <asp:Label ID="LblValidaCpf" runat="server" Text="CPF Inválido" Visible="false" ForeColor="Red" />
             </div>
             <div class="col-md-9">
                 <label for="Nome" class="form-label">Nome</label>
-                <input type="text" runat="server" id="Nome" class="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Nome" ErrorMessage="Preencha o Campo" ForeColor="Red" />
+                <input type="text" runat="server" id="Nome" class="form-control" ValidationGroup="cadastro" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Nome" ErrorMessage="Preencha o Campo" ForeColor="Red" ValidationGroup="cadastro" />
             </div>
         </div>
         <div class="row mt-3">
@@ -40,8 +42,8 @@
         <div class="row mt-3">
             <div class="col-md-3">
                 <label for="DataNascimento" class="form-label">Data Nascimento</label>
-                <input type="date" runat="server" id="DataNascimento" class="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="DataNascimento" ErrorMessage="Preencha o Campo" ForeColor="Red" />
+                <input type="date" runat="server" id="DataNascimento" class="form-control" ValidationGroup="cadastro" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="DataNascimento" ErrorMessage="Preencha o Campo" ForeColor="Red" ValidationGroup="cadastro" />
 
             </div>
             <div class="col-md-3">
@@ -67,20 +69,20 @@
         <div class="row mt-3">
             <div class="col-md-3">
                 <label for="Cep" class="form-label">CEP</label>
-                <input type="text" runat="server" id="Cep" class="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Cep" ErrorMessage="Preencha o Campo" ForeColor="Red" />
+                <input type="text" runat="server" id="Cep" class="form-control" ValidationGroup="cadastro" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Cep" ErrorMessage="Preencha o Campo" ForeColor="Red" ValidationGroup="cadastro" />
 
             </div>
             <div class="col-md-6">
                 <label for="Logradouro" class="form-label">Rua</label>
-                <input type="text" runat="server" id="Logradouro" class="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Logradouro" ErrorMessage="Preencha o Campo" ForeColor="Red" />
+                <input type="text" runat="server" id="Logradouro" class="form-control" ValidationGroup="cadastro" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Logradouro" ErrorMessage="Preencha o Campo" ForeColor="Red" ValidationGroup="cadastro" />
 
             </div>
             <div class="col-md-3">
                 <label for="Numero" class="form-label">Numero</label>
-                <input type="text" runat="server" id="Numero" class="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Numero" ErrorMessage="Preencha o Campo" ForeColor="Red" />
+                <input type="text" runat="server" id="Numero" class="form-control" ValidationGroup="cadastro" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Numero" ErrorMessage="Preencha o Campo" ForeColor="Red" ValidationGroup="cadastro" />
 
             </div>
         </div>
@@ -91,45 +93,47 @@
             </div>
             <div class="col-md-3">
                 <label for="Bairro" class="form-label">Bairro</label>
-                <input type="text" runat="server" id="Bairro" class="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Bairro" ErrorMessage="Preencha o Campo" ForeColor="Red" />
+                <input type="text" runat="server" id="Bairro" class="form-control" ValidationGroup="cadastro" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Bairro" ErrorMessage="Preencha o Campo" ForeColor="Red" ValidationGroup="cadastro" />
 
             </div>
             <div class="col-md-3">
                 <label for="Cidade" class="form-label">Cidade</label>
-                <input type="text" runat="server" id="Cidade" class="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Cidade" ErrorMessage="Preencha o Campo" ForeColor="Red" />
+                <input type="text" runat="server" id="Cidade" class="form-control" ValidationGroup="cadastro" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Cidade" ErrorMessage="Preencha o Campo" ForeColor="Red" ValidationGroup="cadastro" />
 
             </div>
             <div class="col-md-3">
                 <label for="UF" class="form-label">UF</label>
-                <input type="text" runat="server" id="UF" class="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="UF" ErrorMessage="Preencha o Campo" ForeColor="Red" />
-
+                <input type="text" runat="server" id="UF" class="form-control" ValidationGroup="cadastro" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="UF" ErrorMessage="Preencha o Campo" ForeColor="Red" ValidationGroup="cadastro" />
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-12 text-end">
-                <asp:Button ID="Cadastrar" runat="server" Text="Cadastrar" CssClass="btn btn-dark btn-lg" OnCommand="Cadastrar_Command" />
+                <asp:Button ID="Cadastrar" runat="server" Text="Cadastrar" CssClass="btn btn-dark btn-lg" OnCommand="Cadastrar_Command" ValidationGroup="cadastro" />
+                <asp:Button ID="Atualizar" runat="server" Text="Atualizar" CssClass="btn btn-dark btn-lg" OnCommand="Atualizar_Command" ValidationGroup="cadastro"/>
             </div>
         </div>
-
         <div class="row mt-5">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <asp:GridView ID="GvCadastros" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
                     <Columns>
-                        <%--<asp:BoundField HeaderText="Descrição" DataField="Descricao" />
-                        <asp:BoundField HeaderText="Data Lançamento" DataField="DataLancamento" DataFormatString="{0:dd/MM/yyyy}" />
-                        <asp:BoundField HeaderText="Valor" DataField="Valor" />
+                        <asp:BoundField HeaderText="Nome" DataField="Nome" />
+                        <asp:BoundField HeaderText="CPF" DataField="Cpf"  />
+                        <asp:BoundField HeaderText="Data Nascimento" DataField="DataNascimento" DataFormatString="{0:dd/MM/yyyy}" />
                         <asp:TemplateField HeaderText="Ação">
                             <ItemTemplate>
-                                <asp:ImageButton ID="BtnDeletarLancamento" runat="server" ImageUrl="img/baseline_clear_black_24dp.png" CommandArgument='<%#Eval("IdLancamento")%>' OnCommand="BtnDeletarLancamento_Command" />
+                                <asp:Button ID="BtnAlterarCadastro" runat="server" CssClass="btn btn-outline-dark" Text="Alterar" CommandArgument='<%#Eval("IdCliente")%>' OnCommand="BtnAlterarCadastro_Command" UseSubmitBehavior="false" />
+                                <asp:Button ID="BtnExcluirCadastro" runat="server" CssClass="btn btn-outline-dark" Text="Excluir" CommandArgument='<%#Eval("IdCliente")%>' OnCommand="BtnExcluirCadastro_Command" />
                             </ItemTemplate>
-                        </asp:TemplateField>--%>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
+    </div>
+    <div class="container mt-5">
 
     </div>
 </asp:Content>

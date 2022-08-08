@@ -13,16 +13,92 @@
   <wsdl:message name="IGtiService_NovoCadastro_OutputMessage">
     <wsdl:part name="parameters" element="tns:NovoCadastroResponse" />
   </wsdl:message>
+  <wsdl:message name="IGtiService_BuscarClientes_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarClientes" />
+  </wsdl:message>
+  <wsdl:message name="IGtiService_BuscarClientes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGtiService_ExcluirCadastro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExcluirCadastro" />
+  </wsdl:message>
+  <wsdl:message name="IGtiService_ExcluirCadastro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExcluirCadastroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGtiService_BuscarCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarCliente" />
+  </wsdl:message>
+  <wsdl:message name="IGtiService_BuscarCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGtiService_AtualizarCadastro_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarCadastro" />
+  </wsdl:message>
+  <wsdl:message name="IGtiService_AtualizarCadastro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarCadastroResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGtiService">
     <wsdl:operation name="NovoCadastro">
       <wsdl:input wsaw:Action="http://tempuri.org/IGtiService/NovoCadastro" message="tns:IGtiService_NovoCadastro_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGtiService/NovoCadastroResponse" message="tns:IGtiService_NovoCadastro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarClientes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGtiService/BuscarClientes" message="tns:IGtiService_BuscarClientes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGtiService/BuscarClientesResponse" message="tns:IGtiService_BuscarClientes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirCadastro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGtiService/ExcluirCadastro" message="tns:IGtiService_ExcluirCadastro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGtiService/ExcluirCadastroResponse" message="tns:IGtiService_ExcluirCadastro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGtiService/BuscarCliente" message="tns:IGtiService_BuscarCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGtiService/BuscarClienteResponse" message="tns:IGtiService_BuscarCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarCadastro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGtiService/AtualizarCadastro" message="tns:IGtiService_AtualizarCadastro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGtiService/AtualizarCadastroResponse" message="tns:IGtiService_AtualizarCadastro_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGtiService" type="tns:IGtiService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="NovoCadastro">
       <soap:operation soapAction="http://tempuri.org/IGtiService/NovoCadastro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarClientes">
+      <soap:operation soapAction="http://tempuri.org/IGtiService/BuscarClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirCadastro">
+      <soap:operation soapAction="http://tempuri.org/IGtiService/ExcluirCadastro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCliente">
+      <soap:operation soapAction="http://tempuri.org/IGtiService/BuscarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarCadastro">
+      <soap:operation soapAction="http://tempuri.org/IGtiService/AtualizarCadastro" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

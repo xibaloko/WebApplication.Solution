@@ -2,10 +2,6 @@
 using Domain.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 
 namespace WCFServiceHost
 {
@@ -14,6 +10,27 @@ namespace WCFServiceHost
     public class GtiService : IGtiService
     {
         private readonly CadastroBusiness cadastro = new CadastroBusiness();
+
+        public void AtualizarCadastro(int id, Cliente cliente)
+        {
+            cadastro.AtualizarCadastro(id, cliente);
+        }
+
+        public Cliente BuscarCliente(int id)
+        {
+            return cadastro.BuscarCliente(id);
+        }
+
+        public List<Cliente> BuscarClientes()
+        {
+            return cadastro.BuscarClientes();
+        }
+
+        public void ExcluirCadastro(int id)
+        {
+            cadastro.ExcluirCadastro(id);
+        }
+
         public void NovoCadastro(Cliente cliente)
         {
             cadastro.NovoCadastro(cliente);
