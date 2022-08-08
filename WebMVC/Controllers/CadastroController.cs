@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -78,11 +79,12 @@ namespace WebMVC.Controllers
 
         // POST: Cadastro/Create
         [HttpPost]
-        public ActionResult Create(Cliente model)
+        public async Task<ActionResult> Create(Cliente model)
         {
             try
             {
-                // TODO: Add insert logic here
+                Api api = new Api();
+                await api.PostCliente(model, HttpMethod.Post);
 
                 return RedirectToAction("Index");
             }

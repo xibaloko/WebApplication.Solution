@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -13,6 +15,7 @@ namespace WebMVC.Util
 {
     public class Api
     {
+        private readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
         public async Task<List<Cliente>> GetClientes()
         {
             WebResponse response;
@@ -39,34 +42,36 @@ namespace WebMVC.Util
                 throw new Exception("Não foi possivel buscar o cep.");
             }
         }
-
-        public async Task<Cliente> PostCliente()
+        public async Task<Cliente> PostCliente(Cliente data, HttpMethod method)
         {
-            //WebResponse response;
-            //string endPoint = $"http://localhost:51456/api/Cadastro";
-            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endPoint);
-            //request.ContentType = "application/json";
-            //request.Accept = "application/json";
-            //request.t
-            //try
-            //{
-            //    response = await request.GetResponseAsync();
-            //}
-            //catch (Exception)
-            //{
-            //    throw;
-            //}
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders
+                 .Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            using (var requestMessage = new HttpRequestMessage(method, "http://localhost:51456/api/Cadastro"))
+            {
+                await SetContent(data, requestMessage);
 
-            //if (((HttpWebResponse)response).StatusCode == HttpStatusCode.OK)
-            //{
-            //    var end = await ProcessResponse<List<Cliente>>(response);
-            //    return end;
-            //}
-            //else
-            //{
-            //    throw new Exception("Não foi possivel buscar o cep.");
-            //}
+                var response = await client.SendAsync(requestMessage).ConfigureAwait(false);
+                var obj = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await Task.FromResult(JsonConvert.DeserializeObject<Cliente>(obj, JsonSettings)).ConfigureAwait(false);
+                }
+                else { return null; }
+            }
         }
+
+        private async Task SetContent(object data, HttpRequestMessage requestMessage)
+        {
+
+            if (data != null)
+            {
+                var content = await Task.FromResult(JsonConvert.SerializeObject(data, JsonSettings)).ConfigureAwait(false);
+                requestMessage.Content = new StringContent(content, Encoding.UTF8, "application/json");
+            }
+        }
+
         private async Task<T> ProcessResponse<T>(WebResponse response)
         {
             if (((HttpWebResponse)response).StatusCode == HttpStatusCode.OK)
@@ -82,5 +87,34 @@ namespace WebMVC.Util
             }
             throw new Exception("Não foi possível fazer a consulta. Tente novamente.");
         }
+
+        //public async Task<Cliente> PostCliente(Cliente cliente)
+        //{
+        //    string url = "http://localhost:51456/api/Cadastro";
+        //    var request = (HttpWebRequest)WebRequest.Create(url);
+
+        //    var postData = await JsonConvert.SerializeObjectAsync(cliente);
+        //    var data = Encoding.ASCII.GetBytes(postData);
+
+        //    request.Method = "POST";
+        //    request.ContentType = "application/json";
+        //    request.ContentLength = data.Length;
+
+        //    using (var stream = request.GetRequestStream())
+        //    {
+        //        stream.Write(data, 0, data.Length);
+        //    }
+        //    var response = (HttpWebResponse)request.GetResponse();
+
+        //    if (response.StatusCode == HttpStatusCode.OK)
+        //    {
+        //        var end = await ProcessResponse<Cliente>(response);
+        //        return end;
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("Não foi possivel buscar o cep.");
+        //    }
+        //}
     }
 }
