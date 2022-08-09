@@ -148,8 +148,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Api.cs" />
-    <Compile Include="Util\APIResource.cs" />
-    <Compile Include="Util\StandardHttpClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
