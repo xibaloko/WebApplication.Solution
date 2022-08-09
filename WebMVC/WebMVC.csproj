@@ -130,13 +130,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSS\ajuste-forms.css" />
-    <Content Include="CSS\bootstrap-datetimepicker.css" />
-    <Content Include="CSS\bootstrap-formhelpers.min.css" />
-    <Content Include="CSS\bootstrap-menu.css" />
-    <Content Include="CSS\bootstrap.min.css" />
-    <Content Include="CSS\css-core.css" />
-    <Content Include="CSS\layout.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -166,7 +159,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

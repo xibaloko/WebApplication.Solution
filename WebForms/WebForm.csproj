@@ -90,13 +90,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSS\ajuste-forms.css" />
-    <Content Include="CSS\bootstrap-datetimepicker.css" />
-    <Content Include="CSS\bootstrap-formhelpers.min.css" />
-    <Content Include="CSS\bootstrap-menu.css" />
-    <Content Include="CSS\bootstrap.min.css" />
-    <Content Include="CSS\css-core.css" />
-    <Content Include="CSS\layout.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
