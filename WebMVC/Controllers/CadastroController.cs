@@ -17,44 +17,47 @@ namespace WebMVC.Controllers
         public async Task<ActionResult> Index()
         {
             var clientes = await api.GetClientes();
-
             return View(clientes);
         }
 
-
-        private void PreecherDropDownLists()
+        private void PreecherDropDownLists(string sexo = null, string estadoCivil = null)
         {
             List<SelectListItem> lstSexo = new List<SelectListItem>();
 
             lstSexo.Add(new SelectListItem()
             {
                 Text = "Masculino",
-                Value = "M"
+                Value = "M",
+                Selected = sexo != null && sexo == "M" ? true : false
             });
             lstSexo.Add(new SelectListItem()
             {
                 Text = "Feminino",
-                Value = "F"
+                Value = "F",
+                Selected = sexo != null && sexo == "F" ? true : false
             });
 
             List<SelectListItem> lstEstadoCivil = new List<SelectListItem>();
 
             lstEstadoCivil.Add(new SelectListItem()
             {
-                Text = "Casado(a)",
-                Value = "Casado"
+                Text = "Solteiro(a)",
+                Value = "Solteiro",
+                Selected = estadoCivil != null && estadoCivil == "Solteiro" ? true : false
             });
 
             lstEstadoCivil.Add(new SelectListItem()
             {
-                Text = "Solteiro(a)",
-                Value = "Solteiro"
+                Text = "Casado(a)",
+                Value = "Casado",
+                Selected = estadoCivil != null && estadoCivil == "Casado" ? true : false
             });
 
             lstEstadoCivil.Add(new SelectListItem()
             {
                 Text = "Divorciado(a)",
-                Value = "Divorciado"
+                Value = "Divorciado",
+                Selected = estadoCivil != null && estadoCivil == "Divorciado" ? true : false
             });
 
             ViewBag.Sexo = new MultiSelectList(lstSexo.ToList(), "Value", "Text");
@@ -96,18 +99,22 @@ namespace WebMVC.Controllers
         // GET: Cadastro/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
+            
             var cliente = await api.GetCliente(id);
+
+            PreecherDropDownLists(cliente.Sexo, cliente.EstadoCivil);
 
             return View(cliente);
         }
 
         // POST: Cadastro/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, Cliente model, FormCollection collection)
         {
+
             try
             {
-                // TODO: Add update logic here
+                await api.PutCliente(id, model, HttpMethod.Put);
 
                 return RedirectToAction("Index");
             }

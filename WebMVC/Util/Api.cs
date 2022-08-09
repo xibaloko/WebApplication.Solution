@@ -90,6 +90,26 @@ namespace WebMVC.Util
             }
         }
 
+        public async Task<Cliente> PutCliente(int id,Cliente data, HttpMethod method)
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders
+                 .Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            using (var requestMessage = new HttpRequestMessage(method, $"http://localhost:51456/api/Cadastro/{id}"))
+            {
+                await SetContent(data, requestMessage);
+
+                var response = await client.SendAsync(requestMessage).ConfigureAwait(false);
+                var obj = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await Task.FromResult(JsonConvert.DeserializeObject<Cliente>(obj, JsonSettings)).ConfigureAwait(false);
+                }
+                else { return null; }
+            }
+        }
+
         public async Task<Cliente> DeleteCliente(int id, HttpMethod method)
         {
             HttpClient client = new HttpClient();
