@@ -132,3 +132,19 @@
         </div>
     }
 </div>
+
+@section scripts{
+
+    <script type="text/javascript">
+        function CpfInvalido() {
+            alert("Cpf inválido");
+        };
+        
+    </script>
+    @if (ViewBag.JavaScriptFunction != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(ViewBag.JavaScriptFunction)
+        </script>
+    }
+}
