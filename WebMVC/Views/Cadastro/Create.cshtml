@@ -18,12 +18,12 @@
         <div class="row mt-3">
             <div class="col-md-3">
                 <label for="Cpf" class="form-label">CPF</label>
-                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-9">
                 <label for="Nome" class="form-label">Nome</label>
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -55,18 +55,18 @@
         <div class="row mt-3">
             <div class="col-md-3">
                 <label for="DataNascimento" class="form-label">Data Nascimento</label>
-                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", @type = "date", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
 
             </div>
             <div class="col-md-3">
                 <label for="Sexo" class="form-label">Sexo</label>
-                @Html.DropDownList("Sexo", (MultiSelectList)ViewBag.Sexo, null, new { @class = "form-select" })
+                @Html.DropDownList("Sexo", (MultiSelectList)ViewBag.Sexo, null, new { @class = "form-select", @required = "true" })
                 @*@Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })*@
             </div>
             <div class="col-md-3">
                 <label for="EstadoCivil" class="form-label">Estado Civil</label>
-                @Html.DropDownList("EstadoCivil", (MultiSelectList)ViewBag.EstadoCivil, null, new { @class = "form-select" })
+                @Html.DropDownList("EstadoCivil", (MultiSelectList)ViewBag.EstadoCivil, null, new { @class = "form-select", @required = "true" })
                 @*@Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })*@
             </div>
         </div>
@@ -79,20 +79,20 @@
             <div class="col-md-3">
                 <label for="Cep" class="form-label">CEP</label>
                 @*<input type="text" id="Cep" class="form-control" />*@
-                @Html.EditorFor(model => model.Enderecos[0].Cep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Enderecos[0].Cep, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.Enderecos[0].Cep, "", new { @class = "text-danger" })
 
             </div>
             <div class="col-md-6">
                 <label for="Logradouro" class="form-label">Rua</label>
                 @*<input type="text" id="Logradouro" class="form-control" />*@
-                @Html.EditorFor(model => model.Enderecos[0].Logradouro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Enderecos[0].Logradouro, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.Enderecos[0].Logradouro, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-3">
                 <label for="Numero" class="form-label">Numero</label>
                 @*<input type="text" id="Numero" class="form-control" />*@
-                @Html.EditorFor(model => model.Enderecos[0].Numero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Enderecos[0].Numero, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.Enderecos[0].Numero, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -107,19 +107,19 @@
             <div class="col-md-3">
                 <label for="Bairro" class="form-label">Bairro</label>
                 @*<input type="text" id="Bairro" class="form-control" />*@
-                @Html.EditorFor(model => model.Enderecos[0].Bairro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Enderecos[0].Bairro, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.Enderecos[0].Bairro, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-3">
                 <label for="Cidade" class="form-label">Cidade</label>
                 @*<input type="text" id="Cidade" class="form-control" />*@
-                @Html.EditorFor(model => model.Enderecos[0].Cidade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Enderecos[0].Cidade, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.Enderecos[0].Cidade, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-3">
                 <label for="UF" class="form-label">UF</label>
                 @*<input type="text" id="UF" class="form-control" />*@
-                @Html.EditorFor(model => model.Enderecos[0].Uf, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Enderecos[0].Uf, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.Enderecos[0].Uf, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -127,12 +127,8 @@
         <div class="row mt-4">
             <div class="col-md-12 text-end">
                 <input type="submit" id="cadastrar" class="btn btn-dark btn-lg" value="Cadastrar" />
-                @*<input type="submit" id="atualizar" class="btn btn-dark btn-lg" />*@
+                @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-outline-dark btn-lg" })
             </div>
         </div>
     }
-
-    @*<div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>*@
 </div>
